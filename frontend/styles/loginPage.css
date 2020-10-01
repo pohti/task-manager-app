@@ -1,0 +1,21 @@
+h1 {
+    font-size: 28px;
+}
+
+#loginform-div {
+    margin-left: 35vw;
+    margin-top: 5vw;
+    width: 250px;
+}
+#loginform {
+    margin-top: 2vw;
+}
+
+#loginform input{
+    display: block;
+    /* border: 5px; */
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px
+}
