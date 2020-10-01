@@ -30,5 +30,8 @@ const taskRouter = require('./routers/task')
 app.use(userRouter)
 app.use(taskRouter)
 
+app.get('/', (req, res) => {
+    res.send('Hello from task manager backend')
+})
 
 module.exports = app
