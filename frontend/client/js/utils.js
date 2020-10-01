@@ -11,20 +11,21 @@ let disableLoginForms = () => {
     }
 }
 
-// let getAllTasks = () => {
-//     const getAllTasksURL = localhostURL + '/tasks'
-//     fetch (getAllTasksURL, {
-//         method:     'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-//         }
-//     })
-//     .then (res => res.json())
-//     .then (data => {
-//         console.log(data)
-//     })
-//     .catch (error => {
-//         console.log(`Error: ${error}`)
-//     })
-// }
+let getAllTasks = () => {
+    fetch ('http://127.0.0.1:3000/tasks', {
+        method:     'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+        }
+    })
+    .then (res => res.json())
+    .then (data => {
+        console.log(data)
+    })
+    .catch (error => {
+        console.log(`Error: ${error}`)
+    })
+}
+
+getAllTasks()
