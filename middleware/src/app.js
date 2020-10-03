@@ -6,7 +6,7 @@ require('./db/mongoose')
 const app = express()
 // Settings
 const settings = {
-    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
+    'allowedHeaders': ['Content-Type', 'Authorization'], // headers that React is sending to the API
     'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
     'origin': '*',
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -19,13 +19,8 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
-app.use(cors(*));
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//     next();
-// });
+app.use(cors(settings));
+
 
 // create router
 // setup what the route will do
