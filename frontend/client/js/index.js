@@ -55,5 +55,3 @@ let verifyUser = (cb) => {
     
 }
 
-
-//getAllTasks()

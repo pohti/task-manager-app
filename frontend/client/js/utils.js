@@ -16,7 +16,7 @@ let getAllTasks = () => {
         method:     'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc2MTAyYTBkZjJkZDQ3MDA4NTFjMjUiLCJpYXQiOjE2MDE3MzQxMzJ9.RIvQbklY40y4UVMWZw3KOSeB7n5GzwzzWKcZdjkEQM8')
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc2MTAyYTBkZjJkZDQ3MDA4NTFjMjUiLCJpYXQiOjE2MDE3MzQxMzJ9.RIvQbklY40y4UVMWZw3KOSeB7n5GzwzzWKcZdjkEQM8'
         }
     })
     .then (res => res.json())
@@ -24,7 +24,7 @@ let getAllTasks = () => {
         console.log(data)
     })
     .catch (error => {
-        console.log(`Error: ${error}`)
+        console.log(`${error}`)
     })
 }
 
