@@ -3,11 +3,33 @@
     <title>Task Manager</title>
     
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/home.css">
 </head>
 <body>
-    <p>Home Page</p>
-    <li><button>set</button></li>
-    <li><button>set</button></li>
-    <li><button>set</button></li>
+    <div id="task-list-div">
+        <span id="header-span">
+            <p>Username: Johnny</p>
+            <button>Save</button>
+            <button>Log Out</button>
+        </span>
+        
+        <li>
+            <input type="checkbox">
+            <label for="">Go Hiking</label>
+        </li>
+        <li>
+            <input type="checkbox">
+            <label for="">Eat buffet</label>
+        </li>
+        <li>
+            <input type="checkbox">
+            <label for="">Meditate</label>
+        </li>
+        <li>
+            <input type="text" placeholder="Add new task" id="add-new-task-input">
+            <button>Add</button>
+        </li>
+    </div>
+
 
 </body>

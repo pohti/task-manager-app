@@ -1,0 +1,19 @@
+#task-list-div {
+    margin: 5% auto;
+    width: 50%;
+}
+
+#header-span p, button{
+    display: inline;
+    margin: 5px;
+}
+
+#task-list-div li {
+    list-style-type: none;
+    margin: 10px;
+}
+
+#add-new-task-input {
+    height: 17px;
+    width: 200px;
+}
