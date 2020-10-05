@@ -1,9 +1,7 @@
+// setting up env variables
 const herokuServerURL = 'https://mmo-task-manager.herokuapp.com'
 const localhostURL = 'http://127.0.0.1:3000'
-
-
 const loginURL = localhostURL + '/users/login'
-console.log(loginURL)
 const PARTICULARS = {
     email: 'eg@email.com',
     password: 'abc123!'
@@ -18,11 +16,12 @@ loginButton.onclick = () => verifyUser(()=> {
     // Display options for user
     if (localStorage.getItem('authToken')) {
         alert('Login successful! Redirecting to home page')
-        //window.location.href = "./home.html"
+        
+        window.location.href = "./home.html"
     }
     else {
         alert('Failed to login')
-        //location.reload()
+        location.reload()
     }
 })
 
@@ -44,7 +43,7 @@ let verifyUser = (cb) => {
             console.log(data)
             localStorage.setItem('authToken', data.token) // saving JWT token
         }
-        else //localStorage.clear()
+        else localStorage.clear()
         cb()
     })
     .catch(error => {
@@ -55,3 +54,17 @@ let verifyUser = (cb) => {
     
 }
 
+// verifyUser(()=> {
+//     // IF: SUCCESSFUL
+//     // Save token as cookie
+//     // Display options for user
+//     if (localStorage.getItem('authToken')) {
+//         alert('Login successful! Redirecting to home page')
+        
+//         window.location.href = "./home.html"
+//     }
+//     else {
+//         alert('Failed to login')
+//         location.reload()
+//     }
+// })
