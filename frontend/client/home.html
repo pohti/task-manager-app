@@ -8,28 +8,17 @@
 <body>
     <div id="task-list-div">
         <span id="header-span">
-            <p>Username: Johnny</p>
-            <button>Save</button>
-            <button>Log Out</button>
+            <p id="username-p"></p>
+            <button id="save-button">Save</button>
+            <button id="logout-button">Log Out</button>
         </span>
         
-        <li>
-            <input type="checkbox">
-            <label for="">Go Hiking</label>
-        </li>
-        <li>
-            <input type="checkbox">
-            <label for="">Eat buffet</label>
-        </li>
-        <li>
-            <input type="checkbox">
-            <label for="">Meditate</label>
-        </li>
-        <li>
+        <ul id="task-list">
             <input type="text" placeholder="Add new task" id="add-new-task-input">
-            <button>Add</button>
-        </li>
+            <button id="add-task-button">Add</button>
+        </ul>
+
     </div>
 
-
+    <script src="js/home.js"></script>
 </body>

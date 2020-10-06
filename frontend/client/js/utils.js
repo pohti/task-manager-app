@@ -11,20 +11,5 @@ let disableLoginForms = () => {
     }
 }
 
-let getAllTasks = () => {
-    fetch (`localhostURL/${tasks}`, {
-        method:     'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-        }
-    })
-    .then (res => res.json())
-    .then (data => {
-        console.log(data)
-    })
-    .catch (error => {
-        console.log(`${error}`)
-    })
-}
+
 
