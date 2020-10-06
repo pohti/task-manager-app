@@ -6,7 +6,7 @@ const loginURL = localhostURL + '/users/login'
 
 
 // Login event listener
-loginButton = document.getElementById("loginButton")
+let loginButton = document.getElementById("loginButton")
 loginButton.onclick = () => verifyUser(()=> {
     // IF: SUCCESSFUL
     // Save token as cookie
@@ -50,4 +50,9 @@ let verifyUser = (cb) => {
         cb()
     })
     
+}
+
+let createAccountButton = document.getElementById("create-account-button")
+createAccountButton.onclick = () => {
+    window.location.href = "/createaccount.html"
 }
