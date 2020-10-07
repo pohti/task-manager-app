@@ -1,7 +1,4 @@
-// setting up env variables
-const herokuServerURL = 'https://mmo-task-manager.herokuapp.com'
-const localhostURL = 'http://127.0.0.1:3000'
-const loginURL = localhostURL + '/users/login'
+
 
 
 
@@ -21,6 +18,9 @@ loginButton.onclick = () => verifyUser(()=> {
         location.reload()
     }
 })
+
+// setting up env variables
+const loginURL = ENV.DEV_MIDDLEWARE_URL + '/users/login'
 
 // to verify user particulars with the server
 let verifyUser = (cb) => {

@@ -1,6 +1,7 @@
 // function to get all tasks from the middleware
 let getAllTasks = (cb) => {
-    fetch (`http://127.0.0.1:3000/tasks`, {
+    // ${process.env.MIDDLEWARE_URL}
+    fetch (`${ENV.DEV_MIDDLEWARE_URL}/tasks`, {
         method:     'GET',
         headers: {
             'Content-Type': 'application/json',
