@@ -1,7 +1,6 @@
 // function to get all tasks from the middleware
 let getAllTasks = (cb) => {
-    // ${process.env.MIDDLEWARE_URL}
-    fetch (`${ENV.DEV_MIDDLEWARE_URL}/tasks`, {
+    fetch (`${MIDDLEWARE_URL}/tasks`, {
         method:     'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -47,7 +46,7 @@ let submitTask = (taskDescription, cb) => {
         description: taskDescription,
         completed: false
     }
-    fetch('http://127.0.0.1:3000/tasks', {
+    fetch(`${MIDDLEWARE_URL}/tasks`, {
         method:     'POST',
         headers:    {
             'Content-Type' : 'application/json',
@@ -70,11 +69,40 @@ let submitTask = (taskDescription, cb) => {
 
 // Implementing logout function
 // TO-DO: need to send POST request for logging out
+const logOutUser = (cb) => {
+    fetch(`${MIDDLEWARE_URL}/users/logout`, {
+        method          : 'POST',
+        headers         : {
+            'Content-Type' : 'application/json',
+            'Authorization' : `Bearer ${localStorage.getItem('authToken')}`
+        }
+    })
+    .then (res => res.json())
+    .then (data => {
+        if (data.message == 'success'){
+            cb(data.message)
+        }
+        else cb('Failed to log out')
+    })
+    .catch (err => {
+        cb(err)
+    })
+}
+
 let logOutButton = document.getElementById('logout-button')
 logOutButton.onclick = () => {
-    localStorage.clear()
-    alert("You have logged out from the session.")
-    window.location.href = "/"
+    logOutUser((result) => {
+        if (result == 'success') {
+            localStorage.clear()
+            alert("You have logged out from the session.")
+            window.location.href = "/"
+        }
+        else {
+            alert ('Failed to log out. Please try again.')
+            console.log(result)
+        }
+    })
+
 }
 
 // Implementing add new task feature

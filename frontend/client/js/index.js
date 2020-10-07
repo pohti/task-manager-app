@@ -1,7 +1,6 @@
 
 
 
-
 // Login event listener
 let loginButton = document.getElementById("loginButton")
 loginButton.onclick = () => verifyUser(()=> {
@@ -19,8 +18,6 @@ loginButton.onclick = () => verifyUser(()=> {
     }
 })
 
-// setting up env variables
-const loginURL = ENV.DEV_MIDDLEWARE_URL + '/users/login'
 
 // to verify user particulars with the server
 let verifyUser = (cb) => {
@@ -29,7 +26,7 @@ let verifyUser = (cb) => {
 
     console.log(`email: ${email} | password: ${password}`)
 
-    fetch(loginURL, {
+    fetch(`${MIDDLEWARE_URL}/users/login`, {
         method:     'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, password})
