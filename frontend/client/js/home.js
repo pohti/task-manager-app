@@ -19,19 +19,31 @@ let getAllTasks = (cb) => {
 
 // function for adding a single task to the list
 let appendTask = (taskDescription, status, id) => {
+    // create 'li' element to contain
     let node = document.createElement("li")
+
+    // create a 'checkbox' and add Event Listener
+    // giving it appropriate ID and attributes
     let checkbox = document.createElement("input")
     checkbox.setAttribute("type", "checkbox")
-    checkbox.setAttribute("id", id)
+    checkbox.setAttribute("class", "task-checkbox")
+    checkbox.setAttribute("checkbox_id", id)
     checkbox.checked = status
+    checkbox.onclick = (element) => {
+        let element_id = element.target.getAttribute('checkbox_id')
+        console.log (`Checkbox ID: ${element_id} was ticked to ${element.target.checked}`)
+    }
 
+    // task description
     let label = document.createElement("label")
     label.innerHTML = taskDescription
 
+    // creating a 'delete button' and adding Event Listener
+    // giving it appropriate ID and attributes
     let deleteButton = document.createElement("button")
-    deleteButton.innerHTML = "x"
+    deleteButton.innerHTML = "delete"
     deleteButton.setAttribute("class", `delete-task-button`)
-    deleteButton.setAttribute("id", id)
+    deleteButton.setAttribute("delete_button_id", id)
 
     node.append(checkbox)
     node.append(label)
@@ -123,6 +135,9 @@ submitTaskButton.onclick = () => {
     }
 }
 
+
+
+// TODO
 // Implementing delete task feature
 // let deleteTaskButtons = document.getElementsByClassName('delete-task-button')
 // console.log(deleteTaskButtons)
@@ -130,12 +145,15 @@ submitTaskButton.onclick = () => {
 //     console.log(button)
 // })
 
-// display correct username
-// get all the tasks
-// extract description and status (completed)
-// display that on HTML
+
+// TODO
+// display correct username (DONE)
+// get all the tasks (DONE)
+// extract description and status (DONE)
+// display that on HTML (DONE)
+// implement logout feature (DONE)
 // add event listeners for each checkbox
-// add event listener for SAVE button
+// add event listener for delete button
 let usernameP = document.getElementById('username-p')
 usernameP.innerHTML = `Username: ${localStorage.getItem('username')}`
 
