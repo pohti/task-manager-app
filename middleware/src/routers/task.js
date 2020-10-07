@@ -76,7 +76,7 @@ router.get('/tasks/:id', auth, async (req,res) => {
     }
 })
 
-// UPDATE
+// UPDATE a single task
 router.patch('/task/:id', auth, async(req, res) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['completed', 'description']

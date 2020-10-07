@@ -17,3 +17,9 @@
     height: 17px;
     width: 200px;
 }
+
+#task-list-div textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    width: 200px;
+}

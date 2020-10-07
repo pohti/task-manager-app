@@ -18,39 +18,46 @@ let getAllTasks = (cb) => {
 }
 
 // function for adding a single task to the list
-let appendTask = (taskDescription, status, id) => {
+let appendTask = (taskDescription, status, task_id) => {
     // create 'li' element to contain
     let node = document.createElement("li")
+    node.setAttribute("task_id", task_id)
 
     // create a 'checkbox' and add Event Listener
     // giving it appropriate ID and attributes
     let checkbox = document.createElement("input")
     checkbox.setAttribute("type", "checkbox")
-    checkbox.setAttribute("class", "task-checkbox")
-    checkbox.setAttribute("checkbox_id", id)
+    checkbox.setAttribute("checkbox_id", task_id)
     checkbox.checked = status
     checkbox.onclick = (e) => {
-        let e_id = e.target.getAttribute('checkbox_id')
-        console.log (`Checkbox ID: ${e_id} was ticked to ${e.target.checked}`)
+        let parent = e.target.parentElement
+        console.log(parent)
     }
 
     // task description
-    let label = document.createElement("label")
-    label.innerHTML = taskDescription
+    let textarea = document.createElement("textarea")
+    textarea.innerHTML = taskDescription
+
+    // creating an 'update button' and adding Event Listener
+    let updateButton = document.createElement("button")
+    updateButton.innerHTML = "Update"
+    updateButton.onclick = (e) => {
+        let parent = e.target.parentElement
+        console.log(parent)
+    }
 
     // creating a 'delete button' and adding Event Listener
     // giving it appropriate ID and attributes
     let deleteButton = document.createElement("button")
-    deleteButton.innerHTML = "delete"
-    deleteButton.setAttribute("class", `delete-task-button`)
-    deleteButton.setAttribute("delete_button_id", id)
+    deleteButton.innerHTML = "Delete"
     deleteButton.onclick = (e) => {
-        let e_id = e.target.getAttribute('delete_button_id')
-        console.log (`Delete button ID: ${e_id} was clicked`)
+        let parent = e.target.parentElement
+        console.log(parent)
     }
 
     node.append(checkbox)
-    node.append(label)
+    node.append(textarea)
+    node.append(updateButton)
     node.append(deleteButton)
 
     document.getElementById("task-list").appendChild(node)
