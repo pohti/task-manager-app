@@ -17,33 +17,59 @@ let getAllTasks = (cb) => {
     })
 }
 
+// implementing update task feature
+let updateTask = (description, completed, task_id, cb) => {
+    fetch(`${MIDDLEWARE_URL}/task/${task_id}`, {
+        method          : 'PATCH',
+        headers         : {
+            'Content-Type'  : 'application/json',
+            'Authorization' : `Bearer ${localStorage.getItem('authToken')}`
+        },
+        body            : JSON.stringify({description, completed})
+    })
+    .then(res => res.json())
+    .then(data => {
+        cb(data)
+    })
+    .catch(err => {
+        console.log(err)
+        cb(null)
+    })
+}
+
 // function for adding a single task to the list
-let appendTask = (taskDescription, status, task_id) => {
+let appendTask = (description, completed, task_id) => {
     // create 'li' element to contain
     let node = document.createElement("li")
     node.setAttribute("task_id", task_id)
+    node.setAttribute("task-description", description)
+    node.setAttribute("completed", completed)
 
     // create a 'checkbox' and add Event Listener
     // giving it appropriate ID and attributes
     let checkbox = document.createElement("input")
     checkbox.setAttribute("type", "checkbox")
     checkbox.setAttribute("checkbox_id", task_id)
-    checkbox.checked = status
-    checkbox.onclick = (e) => {
-        let parent = e.target.parentElement
-        console.log(parent)
-    }
+    checkbox.checked = completed
 
     // task description
     let textarea = document.createElement("textarea")
-    textarea.innerHTML = taskDescription
+    textarea.innerHTML = description
 
     // creating an 'update button' and adding Event Listener
     let updateButton = document.createElement("button")
     updateButton.innerHTML = "Update"
     updateButton.onclick = (e) => {
         let parent = e.target.parentElement
-        console.log(parent)
+        let cur_description = parent.getElementsByTagName("textarea")[0].value
+        let cur_id = parent.getAttribute('task_id')
+        let cur_checkbox_status = parent.getElementsByTagName("input")[0].checked
+        updateTask(cur_description, cur_checkbox_status, cur_id, (result) => {
+            if (result) {
+                window.location.reload()
+            }
+            else alert('Failed to update task. Pls try again')
+        })
     }
 
     // creating a 'delete button' and adding Event Listener

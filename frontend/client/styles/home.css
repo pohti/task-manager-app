@@ -23,3 +23,13 @@
     height: 15px;
     width: 200px;
 }
+
+#task-list {
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#add-new-task-input {
+    margin-left: 30px;
+}
