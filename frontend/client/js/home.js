@@ -37,6 +37,24 @@ let updateTask = (description, completed, task_id, cb) => {
     })
 }
 
+let deleteTask = (task_id, cb) => {
+    fetch(`${MIDDLEWARE_URL}/tasks/${task_id}`, {
+        method          : 'DELETE',
+        headers         : {
+            'Content-Type'  : 'application/json',
+            'Authorization' : `Bearer ${localStorage.getItem('authToken')}`
+        }
+    })
+    .then(res => res.json)
+    .then(data => {
+        cb(data)
+    })
+    .catch(err => {
+        console.log(err)
+        cb(null)
+    })
+}
+
 // function for adding a single task to the list
 let appendTask = (description, completed, task_id) => {
     // create 'li' element to contain
@@ -65,9 +83,7 @@ let appendTask = (description, completed, task_id) => {
         let cur_id = parent.getAttribute('task_id')
         let cur_checkbox_status = parent.getElementsByTagName("input")[0].checked
         updateTask(cur_description, cur_checkbox_status, cur_id, (result) => {
-            if (result) {
-                window.location.reload()
-            }
+            if (result) window.location.reload()
             else alert('Failed to update task. Pls try again')
         })
     }
@@ -78,7 +94,12 @@ let appendTask = (description, completed, task_id) => {
     deleteButton.innerHTML = "Delete"
     deleteButton.onclick = (e) => {
         let parent = e.target.parentElement
-        console.log(parent)
+        let cur_id = parent.getAttribute('task_id')
+        // console.log(`Deleting task id: ${cur_id}`)
+        deleteTask(cur_id, (result) => {
+            if(result) window.location.reload()
+            else alert('Failed to delete task. Pls try again')
+        })
     }
 
     node.append(checkbox)
@@ -164,7 +185,7 @@ submitTaskButton.onclick = () => {
         // send the task to server
         submitTask(taskDescription, (result) => {
             if(result) {
-                alert('Task submitted successfully')
+                //alert('Task submitted successfully')
                 location.reload() // reflect that on the page
             }
             else alert('Failed to submit task. Please try again.')
