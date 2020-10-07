@@ -29,9 +29,9 @@ let appendTask = (taskDescription, status, id) => {
     checkbox.setAttribute("class", "task-checkbox")
     checkbox.setAttribute("checkbox_id", id)
     checkbox.checked = status
-    checkbox.onclick = (element) => {
-        let element_id = element.target.getAttribute('checkbox_id')
-        console.log (`Checkbox ID: ${element_id} was ticked to ${element.target.checked}`)
+    checkbox.onclick = (e) => {
+        let e_id = e.target.getAttribute('checkbox_id')
+        console.log (`Checkbox ID: ${e_id} was ticked to ${e.target.checked}`)
     }
 
     // task description
@@ -44,6 +44,10 @@ let appendTask = (taskDescription, status, id) => {
     deleteButton.innerHTML = "delete"
     deleteButton.setAttribute("class", `delete-task-button`)
     deleteButton.setAttribute("delete_button_id", id)
+    deleteButton.onclick = (e) => {
+        let e_id = e.target.getAttribute('delete_button_id')
+        console.log (`Delete button ID: ${e_id} was clicked`)
+    }
 
     node.append(checkbox)
     node.append(label)
