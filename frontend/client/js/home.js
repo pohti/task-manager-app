@@ -68,6 +68,7 @@ let submitTask = (taskDescription, cb) => {
 }
 
 // Implementing logout function
+// TO-DO: need to send POST request for logging out
 let logOutButton = document.getElementById('logout-button')
 logOutButton.onclick = () => {
     localStorage.clear()

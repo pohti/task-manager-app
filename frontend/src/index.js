@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.sendFile(homePagePath)
 })
 
-const port = process.env.PORT | 3030
+const port = process.env.PORT
 
 app.listen(port, () => {
     console.log('Frontend server is up on port: ' + port)
