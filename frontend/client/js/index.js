@@ -1,6 +1,4 @@
 
-
-
 // Login event listener
 let loginButton = document.getElementById("loginButton")
 loginButton.onclick = () => verifyUser(()=> {
