@@ -1,4 +1,4 @@
-const PROD_MIDDLEWARE_URL = "https://mmo-task-manager.herokuapp.com"
+const PROD_MIDDLEWARE_URL = "https://min-task-manager-app.herokuapp.com"
 const DEV_MIDDLEWARE_URL = "http://127.0.0.1:3000"
 
 const MIDDLEWARE_URL = PROD_MIDDLEWARE_URL
