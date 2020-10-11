@@ -168,7 +168,7 @@ logOutButton.onclick = () => {
             window.location.href = "/"
         }
         else {
-            alert ('Failed to log out. Please try again.')
+            // alert ('Failed to log out. Please try again.')
             console.log(result)
         }
     })
